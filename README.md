@@ -1,0 +1,1 @@
+# anime-nextjs-chakra-app
