@@ -1,11 +1,11 @@
-//This is for new Users. 
+//This is for new Users. (Modal -> Slides)
 //Using Modal and Formcontrol components of ChakraUI for getting user name and the user's favourite anime to set up the profile
 
 "use client" 
 import { useEffect, useState, useRef, useCallback } from 'react'
 import { Heading, Stack, Text, Box, Button } from '@chakra-ui/react'
 import { BackArrow, ForwardArrow, UsernameTextStyles, AnimeListContainer } from "../common/Utilities"
-import { useAppContext } from '@/app/page';
+import { useAppContext } from '@/context/Context';
 import { UserInfoType } from '../common/types'
 import {
     FormControl,
@@ -38,16 +38,18 @@ import {
     const [isUsernameStep, setIsUsernameStep] = useState<boolean>(true);
     const usernameRegex = /^[a-zA-Z0-9_ ]{6,}$/; //To validate user input
 
-    const handleNextStep = useCallback(() => { //handle Modal button click
+    const handleNextStep = () => { //handle Modal button click
       if (isUsernameStep) { //Check if user is in Slide 1
         setIsUsernameStep(false);         
       } else { //if user is in Slide 2, the input is optional
-        const userInfo : UserInfoType = { username, fav_anime };
-        localStorage.setItem('user_info', JSON.stringify(userInfo));
-        onClose();
-        handleDataState();
+        if (typeof window !== 'undefined' && window.localStorage) {
+          const userInfo : UserInfoType = { username, fav_anime };
+          localStorage.setItem('user_info', JSON.stringify(userInfo));
+          onClose();
+          handleDataState();
+        }
       }
-    }, [isUsernameStep]);
+    }
 
       useEffect(() => {
         finalRef?.current?.focus();
@@ -74,7 +76,7 @@ import {
           <Heading as='h1' size={{ base: '2xl', md: '3xl', lg: '4xl' }} noOfLines={1}>
             Welcome to Anime!
           </Heading>
-          <Heading noOfLines={1}>
+          <Heading>
               <Button onClick={onOpen} style={{ fontWeight: 'bold', fontSize: '16px' }}>LET'S GET STARTED <ForwardArrow /></Button>
           </Heading>
         </Stack>
@@ -83,11 +85,11 @@ import {
           <ModalOverlay />
           
           <ModalContent>
+            
             <ModalHeader>{isUsernameStep ? `Let's setup your profile!` : <BackArrow onClick={slideBack} /> }</ModalHeader>
             <ModalCloseButton p={8}/>
-            <ModalBody>
+            <ModalBody sx={{'::-webkit-scrollbar':{ display:'none'}}}>
              {isUsernameStep ?
-             
              <FormControl>
                 <FormLabel htmlFor="username">Pick a Username</FormLabel>
                 <Input

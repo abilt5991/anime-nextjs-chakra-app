@@ -8,6 +8,6 @@ export function Providers({ children }: { children: React.ReactNode }) { //HOC t
   return <ChakraProvider theme={theme}> 
             <ApolloProvider client={client}>
                     {children}
-                    </ApolloProvider>
+                </ApolloProvider>
         </ChakraProvider>
 }

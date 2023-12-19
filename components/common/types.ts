@@ -1,3 +1,5 @@
+//Reusing Interface Types
+
 export interface UserInfoType {
     username: string,
     fav_anime?: string

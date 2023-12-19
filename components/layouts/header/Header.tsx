@@ -1,7 +1,7 @@
 //Header component with user profile info and along with LOGOUT option
 import React, { useState } from "react";
 import EditInfo from './EditProfile'
-import { useAppContext } from "@/app/page";
+import { useAppContext } from "@/context/Context";
 import { UserInfoType } from '../../common/types'
 import { UserName, ListHeader, AnimeLogoText } from "../../common/Utilities"
 import { Box, Flex, Text, Spacer, Heading, Avatar } from '@chakra-ui/react';
@@ -64,7 +64,7 @@ interface UserProps {
             justify="space-between"
             wrap="wrap"
             color="white">
-              <Text mr={2} {...UserName}>{firstName}</Text>
+              <Text mr={2} {...UserName} noOfLines={1}>{firstName}</Text>
               <Avatar name={newUser.username} bgGradient={['linear(to-l, #02AABD, #00CDAC)']} color={"white"}/>
             </Flex>
           </MenuButton>

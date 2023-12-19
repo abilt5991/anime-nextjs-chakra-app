@@ -2,7 +2,7 @@
 //This is the Information page that the logged In user would be able access
 
 import { useQuery } from '@apollo/client';
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { GET_DATA } from '@/graphql/queries'
 import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
 import { LoadingIndicator, MainDescription, AnimeListCard } from '../../common/Utilities'
@@ -14,7 +14,7 @@ import { AnimeProps } from '../../common/types'
 const Main: React.FC = () => {
 const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 const [selectedItem, setSelectedItem] = useState<AnimeProps | null>(null);
-const { loading, error, data } = useQuery(GET_DATA);
+const { loading, error, data } = useQuery(GET_DATA); //useQuery hook performs the GraphQL query asynchronously
 
 if (loading) return <LoadingIndicator />;
 if (error) return <p>Error: {error.message}</p>;

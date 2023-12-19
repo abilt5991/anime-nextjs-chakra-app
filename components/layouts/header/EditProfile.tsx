@@ -1,7 +1,7 @@
 //This is for the user to edit the Profile
 import { useState, useRef } from 'react'
 import { useToast, Text, Button } from '@chakra-ui/react'
-import { useAppContext } from "@/app/page";
+import { useAppContext } from "@/context/Context";
 import { CancelAction } from '../../common/Utilities'
 import {
     Modal,
@@ -52,14 +52,7 @@ import {
       localStorage.setItem('user_info', JSON.stringify(newInfo));
       onClose();
       setUsername('') 
-      toast({
-        position: 'top',
-        title: 'Updated Successfully!',
-        description: "Profile has been updated",
-        status: 'success',
-        duration: 1500,
-        isClosable: true,
-      })
+      toast()
       handleDataState();
     }
   
@@ -74,7 +67,7 @@ import {
           <ModalContent>
           <ModalHeader>Edit your profile</ModalHeader>
             <ModalCloseButton p={8}/>
-            <ModalBody>
+            <ModalBody sx={{'::-webkit-scrollbar':{ display:'none'}}}>
             <FormControl>
                 <FormLabel htmlFor='editname'>Pick a new Username</FormLabel>
                 <Input

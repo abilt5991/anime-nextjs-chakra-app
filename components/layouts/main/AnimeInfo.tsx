@@ -39,7 +39,7 @@ const AnimeInfo: React.FC<ItemModalProps> = ({ isOpen, onClose, animeDetails, de
         <ModalContent>
             <ModalHeader textStyle={'mh1'}>{animeDetails.title?.english || "anime" }</ModalHeader>
             <ModalCloseButton p={8}/>
-                <ModalBody style={{overflow: "scroll", background: "#121212"}}>
+                <ModalBody sx={{background: "#121212", '::-webkit-scrollbar':{ display:'none'}}}>
                     <Box borderRadius='lg' overflow='hidden'>
                         <Image {...ImageStyle} src={animeDetails.bannerImage || default_img} alt={animeDetails.title?.english || "Anime"} />
                     </Box>

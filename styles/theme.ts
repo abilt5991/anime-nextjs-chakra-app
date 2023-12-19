@@ -54,20 +54,19 @@ const theme = extendTheme({
           body:{
             bg: '#000000',
             color: '#ffffff',
-            overflow: "scroll"
+            overflowY: "auto",
           },
           dialog: {
             maxHeight : '80vh',
-            overflow : 'scroll',
             bg: "#000000",
             color: "#ffffff",
             maxW : { base: '100vw', md: '70vw', lg: '50vw' },
-            boxShadow: "0 1px 8px rgba(0, 0, 0, 0.5)"
+            boxShadow: "0 1px 8px rgba(0, 0, 0, 0.5)",
+            overflow: "hidden"
           },
           content: {
             maxHeight : '80vh',
             padding : '8',
-            overflow: "hidden",
           },
           header: {
             bg: "#000000",
