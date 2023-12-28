@@ -32,7 +32,7 @@ interface UserProps {
   }
 
   function logoutUser() {
-    localStorage.clear();
+    localStorage.removeItem('user_info');
     handleDataState();
   }
 

@@ -51,8 +51,15 @@ import {
       newInfo.username = username;
       localStorage.setItem('user_info', JSON.stringify(newInfo));
       onClose();
-      setUsername('') 
-      toast()
+      setUsername('');
+      toast({
+        position: 'top',
+        title: 'Updated Successfully!',
+        description: "Profile has been updated",
+        status: 'success',
+        duration: 1500,
+        isClosable: true,
+      });
       handleDataState();
     }
   
